@@ -3,7 +3,7 @@ import FilmPoster from './FilmPoster';
 import Faves from './Faves';
 
 
-const FilmRow = ({film, onFaveToggle, handleFilmDetails}) => {
+const FilmRow = ({film, faves, onFaveToggle, handleFilmDetails}) => {
 
 
   const handleClick = (film) => {
@@ -14,6 +14,14 @@ const FilmRow = ({film, onFaveToggle, handleFilmDetails}) => {
     handleFilmDetails(film)
   };
 
+  const favorited = (film) => {
+    if (faves.includes(film)) {
+      return 'remove-from-queue'
+    } else {
+      return 'add-to-queue'
+    }
+  }
+
   
   return (
     <div className="film-row" onClick={() => handleFilmDetailsClick(film)}>
@@ -22,7 +30,7 @@ const FilmRow = ({film, onFaveToggle, handleFilmDetails}) => {
         <h1>{film.title}</h1>
         <p>{new Date(film.release_date).getFullYear()}</p>
       </div>
-      <Faves onFaveToggle={() => handleClick(film)} />
+      <Faves favorite={favorited(film)} onFaveToggle={() => handleClick(film)} />
     </div>
   )
 };
