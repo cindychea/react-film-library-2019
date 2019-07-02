@@ -1,22 +1,14 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-const Faves = () => {
-
-  const [isFave, setIsFave] = useState(false);
-
+const Faves = ({onFaveToggle}) => {
 
   const handleClick = (e) => {
     e.stopPropagation()
-
-    setIsFave((isFave) => {
-      return !isFave
-    })
+    onFaveToggle(handleClick)
   };
 
-  const favorited = isFave ? 'remove_from_queue' : 'add_to_queue' 
-
   return (
-    <div className={`film-row-fave ${favorited}`} onClick={handleClick}>
+    <div className={`film-row-fave`} onClick={handleClick}>
       <i className="material-icons">add_to_queue</i>
     </div>
   )
