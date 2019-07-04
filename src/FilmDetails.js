@@ -39,7 +39,7 @@ const FilmDetails = ({currentFilm}) => {
   return (
     <div className="film-details">
       <h1 className="section-title">DETAILS</h1>
-      {details}
+      {details} 
     </div>
   )
 };
